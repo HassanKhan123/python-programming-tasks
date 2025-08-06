@@ -273,5 +273,122 @@ def rotate_list(lst: list, steps: int) -> list:
     return flatten_list(rotated_list)
 
 
-res = rotate_list([1, 2, 3, 4, 5], 2)
+# res = rotate_list([1, 2, 3, 4, 5], 2)
+
+def is_balanced(s: str) -> bool:
+    balanced_dict = {}
+
+    for ch in s:
+        balanced_dict[ch] = balanced_dict.get(ch, 0) + 1
+
+    val = (set(balanced_dict.values()))
+
+    return True if len(val) == 1 else False
+
+
+# res = is_balanced("(()")
+
+def list_intersection(a: list, b: list) -> list:
+    common = []
+
+    for item in a:
+        if item in b:
+            common.append(item)
+    return common
+
+
+# res = list_intersection([1, 2, 3], [2, 3, 4])
+
+
+def capitalize_words(sentence: str) -> str:
+    words = sentence.split(" ")
+    cap_words = []
+
+    for word in words:
+        cap_words.append(word[0].upper() + word[1:])
+
+    return " ".join(cap_words)
+
+
+# res = capitalize_words("hello world")
+
+def first_unique_char(s: str) -> str:
+    for ch in s:
+        if s.count(ch) == 1:
+            return ch
+
+
+# res = first_unique_char("aabbcddee")
+
+def transpose_matrix(matrix: list[list[int]]) -> list[list[int]]:
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    result = []
+
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            print(matrix[r][c])
+            new_row.append(matrix[r][c])
+        result.append(new_row)
+
+    return result
+
+
+# res = transpose_matrix([[1, 2, 3], [4, 5, 6]])
+
+def count_words(sentence: str) -> int:
+    words = sentence.split(" ")
+    return len(words)
+
+
+# res = count_words("This is a test")
+
+def remove_occurrences(lst: list, target) -> list:
+    updated_list = lst
+    for l in updated_list:
+        if l == target:
+            updated_list.remove(l)
+    return updated_list
+
+
+# res = remove_occurrences([1, 2, 3, 2, 4], 2)
+
+def reverse_each_word(sentence: str) -> str:
+    words = sentence.split(" ")
+    reversed_words = []
+    for word in words:
+        reversed_words.append(word[::-1])
+
+    return " ".join(reversed_words)
+
+
+# res = reverse_each_word("hello world")
+
+
+def is_pangram(sentence: str) -> bool:
+    alphabets = "abcdefghijklmnopqrstuvwxyz"
+
+    for ch in alphabets:
+        if ch not in sentence.lower():
+            return False
+
+    return True
+
+
+# res = is_pangram("The quick brown fox jumps over the lazy dog")
+
+def has_pair_with_sum(lst: list, target: int) -> bool:
+    seen = {}  # maps number -> index
+    for i, num in enumerate(lst):
+        complement = target - num
+
+        if complement in seen:
+            return True
+        seen[num] = i
+    return False
+
+
+res = has_pair_with_sum([1, 2, 3, 9], 6)
 print(res)
